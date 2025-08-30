@@ -618,3 +618,18 @@
   const first = COAST_NODES.find(n=>n.id==="chennai");
   if (first) renderSelection(first, [first.lat, first.lng]);
 })();
+async function triggerMultiLingualAlert(message, language, target) {
+    const response = await fetch('http://localhost:3000/api/alert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message, language, target })
+    });
+    return await response.json();
+}
+
+// Example: Trigger Telugu WhatsApp alert
+triggerMultiLingualAlert(
+    'Cyclone warning: Please return to shore immediately.',
+    'telugu',
+    'whatsapp'
+);
