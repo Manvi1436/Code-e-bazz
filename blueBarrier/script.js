@@ -633,3 +633,15 @@ triggerMultiLingualAlert(
     'telugu',
     'whatsapp'
 );
+// In script.js
+document.querySelector('.trigger-btn.primary').addEventListener('click', async () => {
+    const pin = document.querySelector('.pin-search').value;
+    const message = `Emergency alert for area ${pin}. Evacuate immediately.`;
+    await triggerMultiLingualAlert(message, 'telugu', 'radio');
+});
+
+document.querySelector('.trigger-btn.secondary').addEventListener('click', async () => {
+    const pin = document.querySelector('.pin-search').value;
+    const message = `SMS alert for ${pin}. Storm surge expected.`;
+    await triggerMultiLingualAlert(message, 'english', 'whatsapp');
+});
